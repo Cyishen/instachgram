@@ -1,7 +1,7 @@
 import { Link, useNavigate, NavLink, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 
-import { useSignOutAccount } from '@/lib/react-query/query'
+import { useSignInAccount, useSignOutAccount } from '@/lib/react-query/query'
 import { useUserContext } from '@/Context/AuthContext'
 
 import { sidebarLinks } from '@/constants'
@@ -12,6 +12,8 @@ const LeftSidebar = () => {
   const { pathname } = useLocation()
 
   const { mutate: signOut, isSuccess }  = useSignOutAccount()
+  const {mutateAsync: signInAccount} = useSignInAccount()
+
   const navigate = useNavigate()
   const { user } = useUserContext()
 
@@ -52,11 +54,17 @@ const LeftSidebar = () => {
           })}
         </ul>
       </div>
-
-      <Button variant="ghost" onClick={()=>signOut()} className="shad-button_ghost">
-        <img src="/assets/icons/logout.svg" alt="logout"/>
-        <p>Log Out</p>
-      </Button>
+      {!signInAccount ? (  
+        <Link to="/sign-in">
+          <Button className="shad-button_ghost">
+            <p>Sign in</p>
+          </Button>
+        </Link>) : (
+        <Button variant="ghost" onClick={()=>signOut()} className="shad-button_ghost">
+          <img src="/assets/icons/logout.svg" alt="logout"/>
+          <p>Log Out</p>
+        </Button>
+      )}
     </nav>
   )
 }
