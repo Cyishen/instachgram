@@ -23,18 +23,28 @@ const Topbar = () => {
                 <h1 className="text-2xl font-extrabold">instachgram</h1>
             </Link>
 
-            <div className="flex gap-4">
-                <Link to="/sign-in">                
-                    <Button variant="ghost" onClick={()=>signOut()}>
-                        <img src="/assets/icons/logout.svg" alt="logout"/>
-                    </Button>
-                </Link>
+            <div className="flex gap-3">
+                {user.id ? (
+                    <Link to="/sign-in">                
+                        <Button variant="ghost" onClick={()=>signOut()}>
+                            <img src="/assets/icons/logout.svg" alt="logout"/>
+                        </Button>
+                    </Link>
+                ) : ""}
 
-                <Link to={`/profile/${user.id }`} className="flex-center gap-3">
-                    <img src={user.imageUrl || "/assets/icons/profile-placeholder.svg"} 
-                        alt="profile" className="h-8 w-8 rounded-full"
-                    />
-                </Link>
+                {user.id ? (
+                    <Link to={`/profile/${user.id }`} className="flex-center gap-3">
+                        <img src={user.imageUrl || "/assets/icons/profile-placeholder.svg"} 
+                            alt="profile" className="h-8 w-8 rounded-full"
+                        />
+                    </Link>
+                ) : (
+                    <Link to="/sign-in">
+                        <img src={user.imageUrl || "/assets/icons/profile-placeholder.svg"} 
+                            alt="profile" className="h-8 w-8 rounded-full"
+                        />
+                    </Link>
+                )}
             </div>
         </div>
     </section>
