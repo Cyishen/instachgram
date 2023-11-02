@@ -54,16 +54,21 @@ const LeftSidebar = () => {
           })}
         </ul>
       </div>
-      
-        <Link to="/sign-in">
-          <Button className="shad-button_ghost">
-            <p>Sign in</p>
-          </Button>
-        </Link> 
-        <Button variant="ghost" onClick={()=>signOut()} className="shad-button_ghost">
-          <img src="/assets/icons/logout.svg" alt="logout"/>
-          <p>Log Out</p>
-        </Button>
+        {user.id ? (
+          <Link to="/sign-in">
+            <Button variant="ghost" onClick={()=>signOut()} className="shad-button_ghost">
+              <img src="/assets/icons/logout.svg" alt="logout"/>
+              <p>Log Out</p>
+            </Button>
+          </Link> 
+        ): (
+          <Link to="/sign-in">
+            <Button variant="ghost" className="shad-button_ghost">
+              <p>Sign in</p>
+            </Button>
+          </Link> 
+        )}
+
     </nav>
   )
 }
