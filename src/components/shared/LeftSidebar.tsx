@@ -29,15 +29,23 @@ const LeftSidebar = () => {
             <h1 className="text-2xl font-extrabold">instachgram</h1>
         </Link>
 
-        <Link to={`/profile/${user.id }`} className="flex gap-3 items-center">
-          <img src={user.imageUrl || "/assets/icons/profile-placeholder.svg"} 
-              alt="profile" className="h-10 w-10 rounded-full"
-          />
-          <div className="flex flex-col">
-            <p className="body-bold">{user.name}</p>
-            <p className="small-regular text-light-3">{"@" + user.username}</p>
-          </div>
-        </Link>
+        {user.id ? (
+          <Link to={`/profile/${user.id }`} className="flex gap-3 items-center">
+            <img src={user.imageUrl || "/assets/icons/profile-placeholder.svg"} 
+                alt="profile" className="h-10 w-10 rounded-full"
+            />
+            <div className="flex flex-col">
+              <p className="body-bold">{user.name}</p>
+              <p className="small-regular text-light-3">@{user.username}</p>
+            </div>
+          </Link>
+        ) : (
+          <Link to="/sign-in" className="flex gap-3 items-center">
+            <img src={user.imageUrl || "/assets/icons/profile-placeholder.svg"} 
+                alt="profile" className="h-10 w-10 rounded-full"
+            />
+          </Link>
+        )}
 
         <ul className="flex flex-col gap-6">
           {sidebarLinks.map( (link) => {
@@ -64,6 +72,7 @@ const LeftSidebar = () => {
         ): (
           <Link to="/sign-in">
             <Button variant="ghost" className="shad-button_ghost">
+              <img src="/assets/icons/signin.svg" alt="logout"/>
               <p>Sign in</p>
             </Button>
           </Link> 
