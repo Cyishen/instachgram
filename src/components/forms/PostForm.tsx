@@ -83,7 +83,7 @@ const PostForm = ( {post, action}: PostFormProps ) => {
           name="caption"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>caption</FormLabel>
+              <FormLabel>Caption</FormLabel>
               <FormControl>
                 <Textarea className="shad-textarea custom-scrollbar" {...field} />
               </FormControl>
@@ -122,8 +122,7 @@ const PostForm = ( {post, action}: PostFormProps ) => {
         />
 
         <div className="flex gap-4 justify-end">
-          <Button type="button" className="bg-red">Cancel</Button>
-          <Button type="submit" className="bg-sky-500 gap-2" disabled={isLoadingCreate || isLoadingUpdate}>
+          <Button type="submit" className="bg-primary-500 gap-2" disabled={isLoadingCreate || isLoadingUpdate}>
             {isLoadingCreate || isLoadingUpdate && <Loader />}
             {action}
           </Button>

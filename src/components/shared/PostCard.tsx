@@ -23,10 +23,7 @@ const PostCard = ({ post }: PostCardProps) => {
         <div className="flex items-center gap-3">
           <Link to={`/profile/${post.creator.$id}`}>
             <img
-              src={
-                post.creator?.imageUrl ||
-                "/assets/icons/profile-placeholder.svg"
-              }
+              src={ post.creator?.imageUrl || "/assets/icons/profile-placeholder.svg" }
               alt="creator"
               className="w-12 lg:h-12 rounded-full"
             />
@@ -63,13 +60,6 @@ const PostCard = ({ post }: PostCardProps) => {
       <Link to={`/posts/${post.$id}`}>
         <div className="small-medium lg:base-medium py-5">
           <p>{post.caption}</p>
-          {/* <ul className="flex gap-1 mt-2">
-            {post.tags.map((tag: string, index: string) => (
-              <li key={`${tag}${index}`} className="text-light-3 small-regular">
-                #{tag}
-              </li>
-            ))}
-          </ul> */}
         </div>
 
         <img

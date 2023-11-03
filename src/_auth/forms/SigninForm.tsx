@@ -61,7 +61,7 @@ const SigninForm = () => {
 
   return (
     <div className="sm:w-420 flex-center flex-col">
-      <h1 className="text-2xl font-extrabold">instachgram</h1>
+      <h1 className="text-3xl md:text-4xl font-extrabold text-shadow">instachgram</h1>
       <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
         Log in to your account
       </h2>

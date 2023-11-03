@@ -29,7 +29,7 @@ const FileUploader = ( {fieldChange, mediaUrl}: FileUploaderProps) => {
   })
 
   return (
-    <div {...getRootProps()} className="flex flex-center flex-col bg-gray-200 rounded-xl cursor-pointer">
+    <div {...getRootProps()} className="flex flex-center flex-col bg-gray-100 rounded-xl cursor-pointer">
       <input {...getInputProps()} className="cursor-pointer"/>
       {
         fileUrl ? (
@@ -51,10 +51,10 @@ const FileUploader = ( {fieldChange, mediaUrl}: FileUploaderProps) => {
               width={100}
               height={100}
             />
-            <h3 className="mt-6 mb-2">Drag Photo here</h3>
-            <p className="text-gray-500 small-regular">SVG, PNG, JPG</p>
+            <h3 className="mt-6 mb-2">Drag Photo here or Select</h3>
+            <p className="text-gray-500 small-regular mb-2">SVG, PNG, JPG</p>
 
-            <Button className="bg-sky-200">Select from computer</Button>
+            <Button className="border border-dashed border-black">Select</Button>
           </div>
         )
 

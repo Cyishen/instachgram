@@ -1,11 +1,13 @@
 import Loader from '@/components/shared/Loader'
 import PostCard from '@/components/shared/PostCard'
-import { useGetRecentPosts } from '@/lib/react-query/query'
+import UserCard from '@/components/shared/UserCard'
+import { useGetRecentPosts, useGetUsers } from '@/lib/react-query/query'
 import { Models } from 'appwrite'
 
 const Home = () => {
 
   const {data: posts, isPending: isPostLoading} = useGetRecentPosts()
+  const { data: creators, isLoading: isUserLoading} = useGetUsers(10);
 
   return (
     <div className="flex flex-1">
@@ -26,8 +28,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* <div className="home-creators">
-        <h3 className="h3-bold text-light-1">Top Creators</h3>
+      <div className="home-creators">
+        <h3 className="h3-bold">Follow Creators</h3>
         {isUserLoading && !creators ? (
           <Loader />
         ) : (
@@ -39,7 +41,7 @@ const Home = () => {
             ))}
           </ul>
         )}
-      </div> */}
+      </div>
     </div>
   )
 }
