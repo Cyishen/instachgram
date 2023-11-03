@@ -65,7 +65,7 @@ const PostForm = ( {post, action}: PostFormProps ) => {
 
       if(!newPost) {
         toast({
-          title: "try again"
+          title: "Oop, try again"
         })
       } else {
         toast({
