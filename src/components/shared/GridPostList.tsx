@@ -34,7 +34,7 @@ const GridPostList = ({ posts, showUser = true, showStats = true }: GridPostList
                   alt="creator"
                   className="w-8 h-8 rounded-full"
                 />
-                <p className="line-clamp-1">{post.creator.name}</p>
+                <p className="hidden md:block line-clamp-1">{post.creator.name}</p>
               </div>
             )}
             {showStats && <PostStats post={post} userId={user.id} />}
