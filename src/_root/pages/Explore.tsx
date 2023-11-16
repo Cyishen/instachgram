@@ -1,8 +1,10 @@
 import GridPostList from "@/components/shared/GridPostList";
 import Loader from "@/components/shared/Loader";
 import { Input } from "@/components/ui/input";
+import useDebounce from "@/hooks/useDebounce";
 import { useGetPosts, useSearchPosts } from "@/lib/react-query/query";
 import { useState } from "react";
+
 
 export type SearchResultProps = {
   isSearchFetching: boolean;
@@ -24,7 +26,10 @@ const SearchResults = ({ isSearchFetching, searchedPosts }: SearchResultProps) =
 
 const Explore = () => {
   const [searchValue, setSearchValue] = useState('')
-  const { data: searchedPosts, isFetching: isSearchFetching } = useSearchPosts(searchValue);
+
+  const debounced = useDebounce(searchValue, 500)
+  const { data: searchedPosts, isFetching: isSearchFetching } = useSearchPosts(debounced);
+  
 
   const { data: posts} = useGetPosts()
   
@@ -36,7 +41,7 @@ const Explore = () => {
   );
 
   const shouldShowSearchResults = searchValue !== "";
-  const shouldShowPosts = !shouldShowSearchResults  
+  const shouldShowPosts = !shouldShowSearchResults && 
     posts.pages.every((item) => item?.documents.length === 0);
 
   return (
@@ -67,13 +72,13 @@ const Explore = () => {
           <SearchResults isSearchFetching={isSearchFetching} searchedPosts={searchedPosts} />
         ) : shouldShowPosts ? (
           <p className="text-light-4 mt-10 text-center w-full">End of posts</p>
-        ) : (
-          posts.pages.map((item, index) => {
-            if (item && item.documents) {
-              return <GridPostList key={`page-${index}`} posts={item.documents} />;
-            }
-            return null;
-          })
+          ) : (
+            posts.pages.map((item, index) => {
+              if (item && item.documents) {
+                return <GridPostList key={`page-${index}`} posts={item.documents} />;
+              }
+              return null;
+            })
         )}
       </div>
     </div>

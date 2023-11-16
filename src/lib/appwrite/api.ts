@@ -293,7 +293,7 @@ export async function updatePost(post: IUpdatePost) {
         console.log(error);
     }
 }
-export async function deletePost(postId: string, imageId: string) {
+export async function deletePost(postId?: string, imageId?: string) {
     if(!postId || !imageId) throw Error
 
     try {
@@ -302,7 +302,7 @@ export async function deletePost(postId: string, imageId: string) {
             appwriteConfig.postCollectionId,
             postId
         )
-
+        await deleteFile(imageId);
         return { status: "ok" }
     } catch (error) {
         console.log(error)

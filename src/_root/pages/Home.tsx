@@ -29,7 +29,7 @@ const Home = () => {
       </div>
 
       <div className="home-creators">
-        <h3 className="h3-bold">Follow Creators</h3>
+        <h3 className="h3-bold">Follow</h3>
         {isUserLoading && !creators ? (
           <Loader />
         ) : (

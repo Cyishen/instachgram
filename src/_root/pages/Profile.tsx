@@ -1,6 +1,7 @@
 import Loader from "@/components/shared/Loader";
 import { useGetUserById } from "@/lib/react-query/query";
-import { useParams } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
+import GridPostList from "@/components/shared/GridPostList";
 
 
 interface StabBlockProps {
@@ -18,6 +19,7 @@ const StatBlock = ({ value, label }: StabBlockProps) => (
 const Profile = () => {
   const { id } = useParams();
   const { data: currentUser } = useGetUserById(id || "");
+
 
   if (!currentUser)
     return (
@@ -49,7 +51,11 @@ const Profile = () => {
             <p className="small-medium md:base-medium text-center xl:text-left mt-7 max-w-screen-sm">
               {currentUser.bio}
             </p>
-          </div>
+        </div>
+
+        <Routes>
+          <Route index element={<GridPostList posts={currentUser.posts} showUser={false} />} />
+        </Routes>
       </div>
     </div>
   )

@@ -166,7 +166,7 @@
   }
 
   .post_details-delete_btn {
-    @apply p-0 flex gap-3 hover:bg-transparent hover:text-light-1  text-light-1 small-medium lg:base-medium;
+    @apply p-0 flex hover:bg-transparent hover:text-light-1  text-light-1 small-medium lg:base-medium;
   }
 
   /* Profile */
@@ -175,7 +175,7 @@
   }
 
   .profile-inner_container {
-    @apply flex items-center md:mb-8 xl:items-start gap-8 flex-col xl:flex-row relative max-w-5xl w-full;
+    @apply flex items-center md:mb-8 xl:items-start gap-8 flex-col relative max-w-5xl w-full;
   }
 
   .profile-tab {
@@ -243,7 +243,7 @@
 
   /* User card */
   .user-card {
-    @apply flex-center flex-col gap-4 border border-dark-4 rounded-[20px] px-5 py-8;
+    @apply flex-center flex-col gap-4 rounded-[20px] px-5 py-8 shadow-lg;
   }
 }
 

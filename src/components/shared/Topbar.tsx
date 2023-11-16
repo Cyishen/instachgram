@@ -23,7 +23,7 @@ const Topbar = () => {
                 <h1 className="text-2xl font-extrabold">instachgram</h1>
             </Link>
 
-            <div className="flex gap-3">
+            <div className="flex">
                 {user.id ? (
                     <Link to="/sign-in">                
                         <Button variant="ghost" onClick={()=>signOut()}>
