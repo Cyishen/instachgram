@@ -122,7 +122,7 @@ const PostForm = ( {post, action}: PostFormProps ) => {
         />
 
         <div className="flex gap-4 justify-end">
-          <Button type="submit" className="bg-primary-500 gap-2" disabled={isLoadingCreate || isLoadingUpdate}>
+          <Button type="submit" className="bg-black text-white gap-2" disabled={isLoadingCreate || isLoadingUpdate}>
             {isLoadingCreate || isLoadingUpdate && <Loader />}
             {action}
           </Button>

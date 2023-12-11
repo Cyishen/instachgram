@@ -55,7 +55,7 @@ const LeftSidebar = () => {
             const isActive = pathname === link.route
 
             return (
-              <li key={link.label} className={`leftsidebar-link group ${isActive && "bg-primary-500"}`}>
+              <li key={link.label} className={`leftsidebar-link group ${isActive && "bg-gray-300"}`}>
                 <NavLink to={link.route} className="flex gap-4 items-center p-4">
                   <img src={link.imgURL} alt={link.label} className={`${isActive && "invert-white"} group-hover:invert-white`}/>
                   {link.label}
